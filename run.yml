@@ -1,0 +1,12 @@
+- name: block ip add
+  hosts: control_node
+  connection: httpapi
+
+  tasks:
+    - include_role:
+        name: manange_node
+        tasks_from: block_ip
+      vars:
+        source_ip: 172.17.13.98
+        destination_ip: 192.168.56.102
+        ansible_network_os: checkpoint
